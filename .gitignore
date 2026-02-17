@@ -1,0 +1,21 @@
+# Ignore everything
+*
+
+# But allow these
+!.gitignore
+!src/
+!src/**
+
+# Optional if you want tests later
+#!tests/
+#!tests/**
+
+# Always ignore
+myenv/
+data/
+models/
+mlruns/
+.vscode/
+*.pkl
+*.csv
+__pycache__/
