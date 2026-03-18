@@ -1,17 +1,18 @@
 # src/train/tune.py
-import logging, joblib, pandas as pd
+import logging, joblib
 from scipy.stats import randint
 from sklearn.model_selection import train_test_split, RandomizedSearchCV, StratifiedKFold
 from sklearn.metrics import roc_auc_score
 
-from src.config import DATA_PATH, TEST_SIZE, MODEL_PATH
+from src.config import TEST_SIZE, MODEL_PATH
+from src.data.load_all import load_and_normalize
 from src.data.feature_engineering import add_time_features, add_volume_features
 from src.data.clean import clean
 from src.preprocess.pipeline import build_pipeline
 
 def main():
     # Load & prep
-    df = pd.read_csv(DATA_PATH)
+    df = load_and_normalize()
     df = add_time_features(df)
     df = add_volume_features(df)
     df = clean(df)

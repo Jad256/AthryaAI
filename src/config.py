@@ -24,6 +24,11 @@ STACKED_MODEL_PATH = ARTIFACTS_DIR / "trained_model_stacked.pkl"
 GBM_PIPELINE_PATH = ARTIFACTS_DIR / "gbm_pipeline.pkl"
 THRESHOLD_PATH = ARTIFACTS_DIR / "threshold.txt"
 
+# Canonical column set produced by load_and_normalize() across all 4 source files.
+# V1–V28 are PCA-transformed features; Time and Amount are the raw numeric fields;
+# Class is the label (1 = fraud, 0 = legitimate).
+CANONICAL_COLS = ["Time", "Amount", "Class"] + [f"V{i}" for i in range(1, 29)]
+
 # Other constants
 TEST_SIZE = 0.2
 RANDOM_STATE = 42
